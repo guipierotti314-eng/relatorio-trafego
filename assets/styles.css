@@ -1,0 +1,451 @@
+/* Tokens são injetados por app.py para os modos claro e escuro. */
+html, body, [data-testid="stAppViewContainer"], .stApp {
+  background: var(--background);
+  color: var(--text-primary);
+}
+[data-testid="stHeader"] { background: color-mix(in srgb, var(--background) 90%, transparent); }
+[data-testid="stMainBlockContainer"] { max-width: 1440px; padding-top: 2rem; }
+
+h1, h2, h3, h4, [data-testid="stMarkdownContainer"] h1,
+[data-testid="stMarkdownContainer"] h2, [data-testid="stMarkdownContainer"] h3 {
+  color: var(--text-primary);
+  letter-spacing: -.025em;
+}
+p, label, [data-testid="stCaptionContainer"], [data-testid="stMarkdownContainer"] p {
+  color: var(--text-secondary);
+}
+h1::after {
+  content: ""; display: block; width: 56px; height: 4px;
+  margin-top: 9px; border-radius: 4px; background: var(--primary);
+}
+
+[data-testid="stSidebar"] {
+  background: var(--surface);
+  border-right: 1px solid var(--border);
+}
+[data-testid="stSidebar"] p,
+[data-testid="stSidebar"] label,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p { color: var(--text-secondary); }
+[data-testid="stSidebar"] [role="radiogroup"] label p,
+[data-testid="stSidebar"] h1,
+[data-testid="stSidebar"] h2,
+[data-testid="stSidebar"] h3 { color: var(--text-primary); }
+.brand-mark {
+  color: var(--text-primary); font-size: 1.32rem; font-weight: 850;
+  letter-spacing: .08em; margin: .25rem 0 1rem;
+}
+.brand-mark span { color: var(--primary); }
+
+/* Filtros: os controles encolhem com a sidebar sem criar rolagem horizontal. */
+[data-testid="stSidebar"] [data-testid="stDateInput"],
+[data-testid="stSidebar"] [data-testid="stSelectbox"],
+[data-testid="stSidebar"] [data-testid="stMultiSelect"],
+[data-testid="stSidebar"] [data-testid="stExpander"],
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"],
+[data-testid="stSidebar"] div[data-baseweb="select"],
+[data-testid="stSidebar"] [role="combobox"] {
+  width: 100% !important;
+  max-width: 100% !important;
+  min-width: 0 !important;
+  box-sizing: border-box !important;
+}
+[data-testid="stSidebar"] [data-testid="stSelectbox"] > div,
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] > div,
+[data-testid="stSidebar"] [data-testid="stDateInput"] > div {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p,
+[data-testid="stSidebar"] [data-testid="stSelectbox"] label p,
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] label p,
+[data-testid="stSidebar"] [data-testid="stDateInput"] label p {
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  line-height: 1.25;
+}
+
+[data-baseweb="select"] > div,
+[data-baseweb="input"] > div,
+[data-testid="stDateInput"] input,
+[data-testid="stTextInput"] input {
+  background: var(--surface-secondary);
+  border-color: var(--border);
+  color: var(--text-primary);
+}
+[data-testid="stSidebar"] [data-baseweb="select"] > div {
+  background: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+}
+[data-testid="stSidebar"] div[data-baseweb="select"] > div {
+  min-height: 2.45rem;
+  width: 100% !important;
+  min-width: 0 !important;
+  padding-left: .15rem;
+  padding-right: .15rem;
+  box-sizing: border-box;
+}
+[data-testid="stSidebar"] [role="combobox"] {
+  min-height: 2.45rem;
+  padding: .35rem .55rem !important;
+  background-color: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+  color: var(--text-primary) !important;
+}
+[data-testid="stSidebar"] [role="combobox"] span,
+[data-testid="stSidebar"] [role="combobox"] div {
+  min-width: 0;
+  max-width: 100%;
+  color: var(--text-primary) !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+[data-testid="stSidebar"] [data-baseweb="select"] input,
+[data-testid="stSidebar"] [data-baseweb="select"] input::placeholder,
+[data-testid="stSidebar"] [data-baseweb="select"] span {
+  color: var(--text-primary) !important;
+  opacity: 1;
+}
+[data-testid="stSidebar"] [data-baseweb="select"] svg { fill: var(--text-secondary); }
+[data-testid="stSidebar"] [data-testid="stSelectbox"] div[data-baseweb="select"] > div,
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] > div {
+  background-color: var(--surface-secondary) !important;
+  color: var(--text-primary) !important;
+}
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] div,
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] span,
+[data-testid="stSidebar"] [data-testid="stMultiSelect"] div[data-baseweb="select"] input::placeholder {
+  color: var(--text-primary) !important;
+  opacity: 1 !important;
+}
+[data-testid="stSidebar"] div[data-baseweb="select"] span {
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.25;
+  text-align: left;
+}
+[data-baseweb="select"] span,
+[data-baseweb="tag"] span,
+[data-testid="stDateInput"] input,
+[data-testid="stTextInput"] input { color: var(--text-primary); }
+[data-baseweb="tag"] { background: color-mix(in srgb, var(--primary) 18%, var(--surface)); }
+[data-baseweb="popover"], [role="listbox"], [role="dialog"] {
+  background: var(--surface); color: var(--text-primary); border-color: var(--border);
+}
+[data-baseweb="popover"] {
+  max-width: calc(100vw - 1rem) !important;
+  box-sizing: border-box;
+  z-index: 100000;
+}
+[data-baseweb="popover"] ul[role="listbox"],
+ul[role="listbox"],
+[role="listbox"] {
+  max-height: min(240px, 55vh) !important;
+  max-width: calc(100vw - 1rem) !important;
+  overflow-x: hidden !important;
+  overflow-y: auto !important;
+  overscroll-behavior: contain;
+  box-sizing: border-box;
+}
+[role="option"] {
+  color: var(--text-primary); background: var(--surface);
+  min-height: 2.25rem;
+  height: auto !important;
+  max-width: 100%;
+  padding: .5rem .7rem !important;
+  box-sizing: border-box;
+  text-align: left;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  line-height: 1.3;
+  font-size: .9rem;
+}
+[role="option"] div, [role="option"] span {
+  max-width: 100%;
+  white-space: normal !important;
+  overflow-wrap: anywhere;
+  text-align: left;
+}
+[role="option"]:hover { background: var(--surface-secondary); }
+
+[data-testid="stExpander"] {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  overflow: visible !important;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] details,
+[data-testid="stSidebar"] [data-testid="stExpander"] details > div {
+  min-width: 0;
+  max-width: 100%;
+  overflow: visible !important;
+  box-sizing: border-box;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] [data-testid="stVerticalBlock"] {
+  min-width: 0;
+  max-width: 100%;
+  gap: .75rem;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] [role="radiogroup"] {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: .2rem;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] [role="radiogroup"] label {
+  width: 100%;
+  min-height: 1.75rem;
+  margin: 0;
+  padding: .12rem 0;
+  box-sizing: border-box;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] [role="radiogroup"] label p {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+[data-testid="stExpander"] summary p { color: var(--text-primary); font-weight: 650; }
+[data-testid="stSidebar"] [data-testid="stExpander"] details > summary {
+  background: var(--surface-secondary) !important;
+  border-radius: 9px 9px 0 0;
+}
+[data-testid="stSidebar"] [data-testid="stExpander"] details > summary p,
+[data-testid="stSidebar"] [data-testid="stExpander"] details > summary svg {
+  color: var(--text-primary) !important;
+  fill: var(--text-primary) !important;
+}
+[data-baseweb="tab-list"] { border-bottom-color: var(--border); }
+[data-baseweb="tab"] { color: var(--text-secondary); }
+[aria-selected="true"][data-baseweb="tab"] { color: var(--primary); border-bottom-color: var(--primary); }
+
+[data-testid="stMetric"] {
+  min-height: 142px; background: var(--surface); border: 1px solid var(--border);
+  border-top: 3px solid var(--primary); border-radius: 12px; padding: 1rem 1.1rem;
+  box-shadow: 0 5px 20px color-mix(in srgb, var(--text-primary) 7%, transparent);
+}
+[data-testid="stMetricLabel"] p { color: var(--text-secondary); font-weight: 650; }
+[data-testid="stMetricValue"], [data-testid="stMetricValue"] div {
+  color: var(--text-primary) !important;
+}
+[data-testid="stMetricDelta"] svg { opacity: .8; }
+.section-label {
+  color: var(--text-primary); font-size: .82rem; font-weight: 750;
+  letter-spacing: .06em; text-transform: uppercase; margin: 1.25rem 0 .55rem;
+}
+
+.period-banner {
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem; flex-wrap: wrap;
+  background: var(--surface); color: var(--text-primary); padding: 1rem 1.2rem;
+  border: 1px solid var(--border); border-left: 5px solid var(--primary);
+  border-radius: 11px; margin: .7rem 0 1rem;
+}
+.period-banner div { display: flex; flex-direction: column; gap: .18rem; }
+.period-banner small { color: var(--text-secondary); font-size: .7rem; font-weight: 750; letter-spacing: .08em; }
+.period-banner b { color: var(--text-primary); font-size: 1.05rem; }
+.period-banner span { color: var(--text-secondary); }
+
+.stButton button, [data-testid="stDownloadButton"] button {
+  background: var(--surface); color: var(--text-primary); border: 1px solid var(--border);
+  border-radius: 8px;
+}
+.stButton button:hover, [data-testid="stDownloadButton"] button:hover {
+  color: var(--primary-hover); border-color: var(--primary); background: var(--surface-secondary);
+}
+.stButton button:focus, [data-testid="stDownloadButton"] button:focus { box-shadow: 0 0 0 2px color-mix(in srgb, var(--primary) 35%, transparent); }
+
+[data-testid="stFileUploader"] {
+  background: var(--surface-secondary); border: 1px dashed var(--border);
+  border-radius: 10px; padding: .35rem;
+}
+[data-testid="stFileUploaderDropzone"] {
+  background: var(--surface-secondary) !important;
+  border-color: var(--border) !important;
+}
+[data-testid="stFileUploaderDropzone"] button {
+  background: var(--surface) !important;
+  color: var(--text-primary) !important;
+  border-color: var(--border) !important;
+}
+[data-testid="stFileUploaderFile"] {
+  background: var(--surface-secondary) !important;
+  color: var(--text-primary) !important;
+}
+[data-testid="stFileUploader"] small,
+[data-testid="stFileUploader"] span { color: var(--text-secondary); }
+
+[data-testid="stAlert"] { background: var(--surface); color: var(--text-primary); border-color: var(--border); }
+[data-testid="stAlert"] p { color: var(--text-primary); }
+[data-testid="stDataFrame"] { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+
+@media (max-width: 780px) {
+  [data-testid="stMainBlockContainer"] { padding: 1.2rem .8rem; }
+  [data-testid="stMetric"] { min-height: 120px; padding: .8rem; }
+  .period-banner { display: block; }
+  .period-banner div + div { margin-top: .7rem; }
+  [data-testid="stSidebar"] [data-testid="stExpander"] [data-testid="stVerticalBlock"] { gap: .6rem; }
+  [data-testid="stSidebar"] div[data-baseweb="select"] > div { min-height: 2.3rem; }
+  [role="option"] { font-size: .85rem; padding: .45rem .6rem !important; }
+  [data-baseweb="popover"] ul[role="listbox"], ul[role="listbox"], [role="listbox"] { max-height: min(220px, 48vh) !important; }
+}
+
+@media (max-width: 480px) {
+  [data-testid="stSidebar"] [data-testid="stExpander"] { border-radius: 8px; }
+  [data-testid="stSidebar"] [data-testid="stWidgetLabel"] p { font-size: .85rem; }
+  [data-baseweb="popover"] { max-width: calc(100vw - .5rem) !important; }
+}
+
+/* Menu suspenso dos filtros: o portal fica fora da sidebar. */
+div[data-baseweb="popover"] {
+  z-index: 999999 !important;
+  max-width: calc(100vw - 12px) !important;
+}
+
+/* Somente o invólucro do menu limita a caixa; o popover não recebe overflow. */
+div[data-baseweb="popover"] div[data-baseweb="menu"] {
+  max-height: 210px !important;
+  overflow: hidden !important;
+  border-radius: 8px !important;
+}
+
+/* O DIV role=listbox é o pai imediato das opções nesta versão do Streamlit. */
+div[data-baseweb="popover"] ul[role="listbox"],
+div[data-baseweb="popover"] div[role="listbox"],
+div[data-baseweb="menu"] ul,
+ul[role="listbox"],
+div[role="listbox"] {
+  display: block !important;
+  max-height: 210px !important;
+  max-width: calc(100vw - 12px) !important;
+  overflow-y: auto !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin;
+  scrollbar-color: #ff6600 transparent;
+  box-sizing: border-box;
+}
+
+div[data-baseweb="popover"] ul[role="listbox"]::-webkit-scrollbar,
+div[data-baseweb="popover"] div[role="listbox"]::-webkit-scrollbar,
+div[data-baseweb="menu"] ul::-webkit-scrollbar,
+ul[role="listbox"]::-webkit-scrollbar,
+div[role="listbox"]::-webkit-scrollbar {
+  width: 7px;
+}
+
+div[data-baseweb="popover"] ul[role="listbox"]::-webkit-scrollbar-thumb,
+div[data-baseweb="popover"] div[role="listbox"]::-webkit-scrollbar-thumb,
+div[data-baseweb="menu"] ul::-webkit-scrollbar-thumb,
+ul[role="listbox"]::-webkit-scrollbar-thumb,
+div[role="listbox"]::-webkit-scrollbar-thumb {
+  background-color: #ff6600;
+  border-radius: 10px;
+}
+
+div[data-baseweb="popover"] ul[role="listbox"]::-webkit-scrollbar-track,
+div[data-baseweb="popover"] div[role="listbox"]::-webkit-scrollbar-track,
+div[data-baseweb="menu"] ul::-webkit-scrollbar-track,
+ul[role="listbox"]::-webkit-scrollbar-track,
+div[role="listbox"]::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+div[data-baseweb="popover"] li,
+div[data-baseweb="popover"] [role="option"],
+div[role="listbox"] [role="option"] {
+  min-height: 42px !important;
+  height: auto !important;
+  padding: 10px 12px !important;
+  box-sizing: border-box !important;
+  white-space: normal !important;
+  overflow-wrap: anywhere !important;
+}
+
+@media (max-height: 650px) {
+  div[data-baseweb="popover"] div[data-baseweb="menu"],
+  div[data-baseweb="popover"] ul[role="listbox"],
+  div[data-baseweb="popover"] div[role="listbox"],
+  div[data-baseweb="menu"] ul,
+  ul[role="listbox"],
+  div[role="listbox"] {
+    max-height: 155px !important;
+  }
+}
+
+/* Filtros avançados por checkbox, sempre visíveis e compactos. */
+.filter-group-title {
+  color: var(--text-primary);
+  font-size: .86rem;
+  font-weight: 750;
+  margin: .75rem 0 .2rem;
+}
+[data-testid="stSidebar"] [data-testid="stCheckbox"] {
+  min-height: 1.65rem;
+  margin: 0;
+}
+[data-testid="stSidebar"] [data-testid="stCheckbox"] label {
+  color: var(--text-primary);
+  padding: .08rem 0;
+}
+[data-testid="stSidebar"] [data-testid="stCheckbox"] p {
+  color: var(--text-primary);
+  font-size: .86rem;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+/* Tabelas comparativas: largura fluida e rolagem somente quando necessária. */
+.comparison-table-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  margin: .35rem 0 1.25rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--primary) transparent;
+}
+.comparison-table {
+  width: 100%;
+  min-width: 640px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 5px;
+}
+.comparison-table th {
+  background: var(--primary);
+  color: #ffffff;
+  text-align: center;
+  padding: .7rem .45rem;
+  border-radius: 6px;
+  font-size: clamp(.72rem, 1.3vw, .88rem);
+  line-height: 1.2;
+  overflow-wrap: anywhere;
+}
+.comparison-table td {
+  background: var(--surface);
+  color: var(--text-primary);
+  text-align: center;
+  padding: .65rem .4rem;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  font-size: clamp(.72rem, 1.25vw, .86rem);
+  overflow-wrap: anywhere;
+}
+.comparison-table .variation-row td { background: var(--surface-secondary); font-weight: 750; }
+.comparison-table td.variation-positive { color: var(--positive); }
+.comparison-table td.variation-negative { color: var(--negative); }
+.comparison-table td.variation-neutral { color: var(--neutral); }
+.place-table { min-width: 980px; table-layout: auto; }
+.place-table th, .place-table td { min-width: 88px; }
+.place-table th:first-child, .place-table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 1;
+}
+.place-table td:first-child { background: var(--surface); font-weight: 700; }
+
+@media (max-width: 780px) {
+  .comparison-table { min-width: 580px; border-spacing: 3px; }
+  .comparison-table th, .comparison-table td { padding: .52rem .3rem; }
+  .place-table { min-width: 900px; }
+}
