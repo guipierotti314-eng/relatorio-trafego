@@ -109,6 +109,11 @@ BRAND_ALIASES: dict[str, tuple[str, ...]] = {
     "Yamaha": ("geracao yamaha", "yamaha", "yamaha ymh"),
     "Geração Seminovos": ("geracao seminovos",),
     "S2 Bike Shop": ("s2 bike shop", "s2 bike shop floripa"),
+    "Geração Motos Multimarcas": (
+        "geracao motos multimarcas",
+        "geracao motos seminovas",
+        "motos multimarcas",
+    ),
 }
 
 RESULT_CATEGORY_OPTIONS: tuple[str, ...] = (
