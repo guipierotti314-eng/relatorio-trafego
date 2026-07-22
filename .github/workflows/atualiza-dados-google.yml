@@ -1,0 +1,49 @@
+name: Atualiza dados-google
+
+on:
+  schedule:
+    # 10:00 UTC = 07:00 em São Paulo (depois do script do MCC, que roda ~06:00)
+    - cron: "0 10 * * *"
+  workflow_dispatch:
+  push:
+    paths:
+      - ".github/workflows/atualiza-dados-google.yml"
+      - "scripts/update_google_tab.py"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: atualiza-base
+  cancel-in-progress: false
+
+jobs:
+  atualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Dependências
+        run: pip install --quiet openpyxl requests
+
+      - name: Baixar planilha e atualizar aba dados-google
+        run: python scripts/update_google_tab.py
+
+      - name: Commit e push (se houver mudança)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add dados/base_atual.xlsx
+          if git diff --cached --quiet; then
+            echo "Nada a commitar."
+          else
+            git commit -m "Atualiza dados-google a partir da planilha (automático)"
+            git pull --rebase origin main
+            git push
+          fi
