@@ -54,6 +54,22 @@ def download_source() -> bytes:
     return response.content
 
 
+def fix_date(value):
+    """Normaliza datas deslocadas por fuso horário (ex.: 21/07 21:00 → 22/07).
+
+    O script do MCC roda em GMT e a planilha em horário local, então datas
+    podem chegar com horário residual. Arredonda para o dia mais próximo.
+    """
+    if isinstance(value, datetime) and (value.hour or value.minute):
+        base = value.replace(hour=0, minute=0, second=0, microsecond=0)
+        if value.hour >= 12:
+            from datetime import timedelta
+
+            base += timedelta(days=1)
+        return base
+    return value
+
+
 def read_rows(payload: bytes) -> list[tuple]:
     workbook = load_workbook(io.BytesIO(payload), data_only=True)
     if TAB not in workbook.sheetnames:
@@ -61,7 +77,7 @@ def read_rows(payload: bytes) -> list[tuple]:
     sheet = workbook[TAB]
     rows = []
     for row in sheet.iter_rows(values_only=True):
-        values = tuple((row + (None,) * 10)[:10])
+        values = tuple(fix_date(v) for v in (row + (None,) * 10)[:10])
         rows.append(values)
     while rows and all(v is None or v == "" for v in rows[-1]):
         rows.pop()
