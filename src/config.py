@@ -70,11 +70,13 @@ PLACE_ALIASES: tuple[tuple[str, tuple[str, ...]], ...] = (
     ("ILHA/SN", ("ILHA/SN",)),
     ("SJ/ILHA", ("SJ/ILHA", "ILHA")),
     ("FLN", ("FLN",)),
+    ("BC", ("BC", "BALNEÁRIO CAMBORIÚ", "BALNEARIO CAMBORIU", "BALNEÁRIO CAMBURIÚ", "BALNEARIO CAMBURIU")),
+    ("ARA", ("ARA", "ARARANGUÁ", "ARARANGUA")),
     ("Palhoça", ("PALHOÇA", "PALHOCA")),
     ("LGS", ("LGS", "LAG")),
     ("BRQ", ("BRQ", "BRU")),
     ("RDS", ("RDS",)),
-    ("CRI", ("CRI",)),
+    ("CRI", ("CRI", "CRICIÚMA", "CRICIUMA")),
     ("TUB", ("TUB",)),
     ("ING", ("ING",)),
 )
@@ -122,7 +124,7 @@ RESULT_CATEGORY_OPTIONS: tuple[str, ...] = (
 
 PLACE_ORDER: tuple[str, ...] = (
     "FLN", "SJ/ILHA", "ILHA/SN", "LGS", "BRQ",
-    "RDS", "CRI", "TUB", "Palhoça", "ING",
+    "RDS", "CRI", "ARA", "BC", "TUB", "Palhoça", "ING",
 )
 
 METRIC_BEHAVIOR: dict[str, str] = {
