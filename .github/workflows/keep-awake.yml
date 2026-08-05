@@ -1,0 +1,44 @@
+name: Manter app Streamlit ativo
+
+on:
+  schedule:
+    # A cada 6 horas (horário UTC)
+    - cron: '0 */6 * * *'
+  workflow_dispatch: {}  # permite rodar manualmente na aba Actions
+
+jobs:
+  visitar-app:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Instalar Playwright
+        run: |
+          pip install playwright
+          playwright install chromium --with-deps
+
+      - name: Visitar o app (e acordar se estiver dormindo)
+        run: |
+          python - <<'EOF'
+          from playwright.sync_api import sync_playwright
+
+          URL = "https://relatorio-trafego.streamlit.app"
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page()
+              page.goto(URL, timeout=120_000)
+              page.wait_for_timeout(10_000)
+
+              # Se o app estiver hibernando, clica no botão de acordar
+              try:
+                  botao = page.get_by_text("get this app back up", exact=False)
+                  if botao.count() > 0:
+                      botao.first.click()
+                      print("App estava dormindo — botão de acordar clicado.")
+                      page.wait_for_timeout(60_000)
+              except Exception as e:
+                  print(f"Sem botão de acordar (app já ativo): {e}")
+
+              page.wait_for_timeout(15_000)
+              print("Visita concluída.")
+              browser.close()
+          EOF
